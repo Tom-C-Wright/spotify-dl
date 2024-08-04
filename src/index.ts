@@ -1,8 +1,13 @@
+import { FfmpegMediaFileService } from './services/media/ffmpeg.js';
+import { format } from 'util';
 
-(()=>{
-    try {
-        console.log("Hello world");
-    } catch (error) {
-
-    }
-});
+(() => {
+  try {
+    const mediaFileService = new FfmpegMediaFileService({
+      platform: process.platform,
+    });
+    mediaFileService.checkInstall();
+  } catch (error) {
+    console.log(format(error));
+  }
+})();
